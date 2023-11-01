@@ -3,13 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index.css" type="text/css">
     <title>IMFINE_FE</title>
 </head>
 <body>
     <header>
         <div class="header_name">아이엠파인 SD팀 지원자 조혜진</div>
     </header>
+    <main>
+        <!--1. 그래프-->
+        <section id="graph">
+            <div class="title">1. 그래프</div>
+            <ul class="graph_y">
+                <li class="y_item"></li>
+                <li class="y_item">100</li>
+                <li class="y_item">0</li>
+            </ul>
+            <ul class="graph_x">
+                <li class="x_item">
+                    <span class="x_text">4</span>
+                    <div class="x_bar">
+                        <span class="bar_item"></span>
+                    </div>
+                </li> 
+
+                <li class="x_item">
+                    <span class="x_text">3</span>
+                    <div class="x_bar">
+                        <span class="bar_item"></span>
+                    </div>
+                </li> 
+
+                <li class="x_item">
+                    <span class="x_text">2</span>
+                    <div class="x_bar">
+                        <span class="bar_item"></span>
+                    </div>
+                </li> 
+
+                <li class="x_item">
+                    <span class="x_text">1</span>
+                    <div class="x_bar">
+                        <span class="bar_item"></span>
+                    </div>
+                </li> 
+
+                <li class="x_item">
+                    <span class="x_text">0</span>
+                    <div class="x_bar">
+                        <span class="bar_item"></span>
+                    </div>
+                </li> 
+            </ul>
+        </section>
+
+        <!--2. 값 편집-->
+        <section id="chart">
+            <div class="title">2. 값 편집</div>
+            <table class="chart_table">
+                <thead>
+                    <tr class="chart_title">
+                        <th class="chart_items id">ID</th>
+                        <th class="chart_items value">값</th>
+                        <th class="chart_items etc">비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="chart_contents">
+                        <td class="chart_content id">0</td>
+                        <td class="chart_content value">100</td>
+                        <td class="chart_content etc">
+                            <button class="delteBtn">삭제</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn applyBtn">Apply</button>
+
+        </section>
+
+        <!--3. 값 추가-->
+        <section id="addValue">
+            <div class="title">3. 값 추가</div>
+            <form>
+                <fieldset>
+                    <input type="text" name="ID" placeholder="ID" class="input" id="addId"/>
+                    <input type="text" name="value" placeholder="VALUE" class="input" id="addValue"/>
+                    <input type="submit" value="Add" class="input" id="submitNew"/>
+                </fieldset>
+            </form>
+        </section>
+
+        <!--4. 값 고급 편집-->
+        <section id="advancedAmend">
+            <div class="title">4. 값 고급 편집</div>
+            <div class="advanced_contents">
+                호잇 값 고급 편집
+            </div>
+
+            <button class="btn applyBtn">Apply</button>
+
+        </section>
+    </main>
     <!-- JS  -->
     <script src="main.js"></script>
 </body>
