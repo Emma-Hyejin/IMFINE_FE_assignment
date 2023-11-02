@@ -50,3 +50,47 @@ dummyDatas.forEach( function(data) {
 
     xList.appendChild(xItem);
 });
+
+
+// 2. 값 변경 로직
+dummyDatas.forEach( (data) => {
+    let tbody = document.querySelector('.chart_table tbody');
+    let row = document.createElement('tr');
+    row.className = "chart_contents";
+
+    let idPart = document.createElement('td');
+    idPart.className = "chart_content id";
+    idPart.textContent = data.id;
+
+    let valuePart = document.createElement('td');
+    valuePart.className = "chart_content value";
+    valuePart.textContent = data.value;
+
+    let etcPart = document.createElement('td');
+    etcPart.className = "char_content etc";
+    
+
+    let deleteBtn = document.createElement('button');
+    deleteBtn.className = "deleteBtn";
+    deleteBtn.textContent = "삭제";
+
+    etcPart.appendChild(deleteBtn);
+
+    //row > idPart,valuePArt, etcPart
+    row.appendChild(idPart);
+    row.appendChild(valuePart);
+    row.appendChild(etcPart);
+
+    tbody.appendChild(row);
+}); 
+
+const deleteBtn = document.querySelectorAll('.deleteBtn');
+
+deleteBtn.forEach((button) => {
+    button.addEventListener('click', function(){
+        const row = button.closest('tr');
+        if(row){
+            row.remove();
+        }
+    });
+});

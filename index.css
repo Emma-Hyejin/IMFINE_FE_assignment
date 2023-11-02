@@ -34,12 +34,13 @@ ul, li{
     border-radius: 10px;
     padding: 5px 10px;
     font-size: 18px;
-    background-color:#3e94ec ;
+    background-color:#7091F5;
     float: right;
 }
 
 .btn:hover{
     cursor:pointer;
+    background-color: #A9C9FF;
 }
 
 /* 그래프 */
@@ -115,24 +116,38 @@ tr {
 
 thead .chart_items {
     margin: 0;
-    background-color: pink;
+    padding: 7px 0;
+    background-color: #7091F5;
 }
 
 tbody .chart_contents {
     margin: 3px 0 3px 0;
-    background-color: skyblue;
+    background-color: #C2D9FF;
+}
+
+tbody .chart_contents:hover {
+    background-color: #A9C9FF;
+}
+
+.chart_content {
+    padding: 5px 0;
 }
 
 /* 삭제 버튼 */
-.delteBtn {
+.deleteBtn {
     background:none;
     border: none;
     color: red;
 }
 
+.deleteBtn:hover{
+    cursor: pointer;
+    font-weight: 800;
+}
+
 /* Apply 버튼 */
 .applyBtn {
-   margin: 5px 0 0 0 ; 
+   margin: 7px 0 0 0 ; 
 }
 
 
