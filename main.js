@@ -6,7 +6,7 @@ const dummyDatas = [
         "value" : 75,
     },
     {
-        "id" : 2,
+        "id" : 1,
         "value" : 20,
     },
     {
@@ -22,3 +22,31 @@ const dummyDatas = [
         "value" : 70,
     }
 ];
+
+let yHeight = 14.5;
+let xList = document.getElementById('xList');
+
+dummyDatas.forEach( function(data) {
+    let xItem = document.createElement('li');
+    xItem.className = 'x_item';
+
+    let xText = document.createElement('span');
+    xText.className = 'x_text';
+    xText.textContent = data.id;
+
+    let xBar = document.createElement('div');
+    xBar.className = 'x_bar';
+
+    let barItem = document.createElement('span');
+    barItem.className = 'bar_item';
+    barItem.style.height = (data.value / yHeight * 100) + '%';
+    // barItem.style.top = 100 - data.value + '%';
+
+    //xItem >x_text
+    //      >x_bar > bar_item
+    xBar.appendChild(barItem);
+    xItem.appendChild(xText);
+    xItem.appendChild(xBar);
+
+    xList.appendChild(xItem);
+});

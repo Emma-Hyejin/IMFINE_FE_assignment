@@ -49,7 +49,6 @@ ul, li{
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    background-color: skyblue;
     top: 0;
     left: 0;
     margin: 0;
@@ -63,27 +62,31 @@ ul, li{
 #graph .graph_x {
     display: flex;
     align-items: center;
-    flex-direction:row-reverse;
+    /* flex-direction:row-reverse; */
     justify-content: space-between;
-    background-color: yellow;
     margin: 0 0 0 25px;
     padding: 5px 60px 0 30px;
     border-top: 1px solid black;
-
+    position: relative;
 }
 
 .x_text{
     position: relative;
     left: 15px;
+    font-weight: 400;
 }
 
 .graph_x .bar_item {
-    background-color: gray;
+    background-color: #8E8FFA;
     border-radius: 3px 3px 0 0;
     width: 40px;
-    height: 50px;
     position: absolute;
-    top: 350px;
+    bottom: 23px;
+}
+
+.bar_item:hover{
+    background-color: #7752FE;
+    cursor: pointer;
 }
 
 
