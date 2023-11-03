@@ -167,11 +167,19 @@ addForm.addEventListener('submit', function(event){
     const numId = parseInt(id, 10);
     const numValue = parseInt(value, 10);
 
+    //중복 ID 입력 방지
+    const existingData = dummyDatas.find(data => data.id === numId);
+
     if( !id || !value ){
         alert('ID와 VALUE 를 입력하세요.');
         return;
     } else if ( isNaN(numId) || isNaN(numValue)){
         alert('숫자를 입력하세요.');
+        return;
+    }
+
+    if(existingData){
+        alert('이미 존재하는 ID 입니다.');
         return;
     }
 
@@ -206,24 +214,38 @@ amendForm.addEventListener('submit', function(event){
 
         //유효성 검증
         if(!Array.isArray(amendNewDatas)){
-            throw new Error('데이터는 배열 형태여야 합니다. ');
+            throw new Error('배열 에러');
         }
 
         amendNewDatas.forEach((data) => {
+            //중복 ID 입력 방지
+            const existingData = dummyDatas.find(element => element.id === data.id);
+
+            //유효성 검증
             if(typeof data.id !== 'number' || typeof data.value !== 'number'){
-                throw new Error ('ID와 VALUE 는 숫자로 작성해주세요.');
+                throw new Error ('숫자 데이터 에러');
             }
 
-            if(!data.id || !data.value){
-                throw new Error('ID와 VALUE 를 입력해주세요.');
+            if(!data.id && !data.value){
+                throw new Error('미입력 에러');
+            }
+
+            if(existingData === data.id){
+                throw new Error('중복 에러');
             }
         });
+
         dummyDatas = amendNewDatas;
         console.log('유효한 데이터', contents);
 
         renderTotal();
     } catch (err) {
-        alert(`데이터를 다시 작성해주세요. : ${err.message}`);
+       if(err.message === '숫자 데이터 에러') alert('ID와 VALUE 는 숫자로 입력해주세요.');
+       if(err.message === '미입력 에러') alert('ID와 VALUE 모두 작성해주세요.');
+       if(err.message === '중복 에러') alert('중복된 ID 입니다. ');
+       if(err.message === '배열 에러') alert('데이터는 배열 형태여야 합니다. ');
+
+       alert(`에러: ${err.message}`);
     }
 
 
