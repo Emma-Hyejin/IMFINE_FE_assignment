@@ -49,6 +49,7 @@ function renderGraph(){
     
         const barItem = document.createElement('span');
         barItem.className = 'bar_item';
+        barItem.setAttribute('data-value', data.value);
         barItem.style.height = (data.value / yHeight * 100) + '%';
         // barItem.style.top = 100 - data.value + '%';
     
@@ -61,6 +62,30 @@ function renderGraph(){
         xList.appendChild(xItem);
     });
 };
+
+//마우스 hover 시 해당 data.value 값 보이기 
+document.getElementById('xList').addEventListener('mouseover', function(event){
+    const target = event.target;
+    if(target.classList.contains('bar_item')){
+        //각 그래프 바의 data 값 가져오기
+        const dataValue = target.getAttribute('data-value');
+
+        //hover 시 data 표시 
+        const hoverValue = document.getElementById('hoverValue');
+        hoverValue.textContent = dataValue;
+        hoverValue.style.left = event.clientX + 'px';
+        hoverValue.style.top = (event.clientY + 30) + 'px'; 
+
+        // console.log(hoverValue.style.left, hoverValue.style.top)
+        hoverValue.classList.add('show');
+
+    }
+});
+
+document.getElementById('xList').addEventListener('mouseout', function(event){
+    const hoverValue = document.getElementById('hoverValue');
+    hoverValue.classList.remove('show');
+})
 
 
 // 2. 값 변경 로직

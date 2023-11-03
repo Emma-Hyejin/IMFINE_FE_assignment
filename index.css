@@ -90,6 +90,21 @@ ul, li{
     cursor: pointer;
 }
 
+/* 마우스 hover - data 표시 */
+.dataTip {
+    position: absolute;
+    background-color: #7091F5;
+    color: #ffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px 12px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.show {
+    display: block;
+}
 
 /* 2. 값 편집 */
 .chart_table {
@@ -193,8 +208,6 @@ form .input {
 #advancedAmend fieldset{
     border: none;
     padding: 0;
-    margin: 0;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items:flex-end;
@@ -202,7 +215,7 @@ form .input {
 
 #advancedAmend .advanced_contents {
     border-radius: 10px;
-    width: 100%;
+    width: 96%;
     min-height: 300px;
     padding: 20px 20px;
     font-weight: 500;
