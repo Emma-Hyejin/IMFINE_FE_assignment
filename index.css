@@ -152,9 +152,8 @@ tbody .chart_contents:hover {
 
 
 /* 3. 값 추가 */
-#addValue fieldset{
-    border:none;
-    background-color: yellow;
+#addData fieldset{
+    border: none;
     padding: 0;
     margin: 0;
     width: 100%;
@@ -181,10 +180,12 @@ form .input {
     width: 70px;
     border-radius: 10px;
     padding: 5px 10px;
+    background-color:#7091F5;
 }
 
 #submitNew:hover{
     cursor:pointer;
+    background-color: #A9C9FF;
 }
 
 

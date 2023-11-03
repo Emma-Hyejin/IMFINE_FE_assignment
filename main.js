@@ -102,7 +102,6 @@ function renderTable(){
 
 };
 
-
 const deleteBtn = document.querySelectorAll('.deleteBtn');
 const applyBtn = document.querySelector('.applyBtn');
 const deleteArr = [];
@@ -127,3 +126,38 @@ applyBtn.addEventListener('click', function(){
 
     renderTotal();
 })
+
+//3. 값 추가 로직
+// const addBtn = document.querySelector('.applyBtn');
+const form = document.querySelector('form');
+const addIdInput = document.getElementById('addId');
+const addValueInput = document.getElementById('addValue');
+
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    //입력 값 가져오기 
+    const id = addIdInput.value;
+    const value = addValueInput.value;
+
+    const numId = parseInt(id, 10);
+    const numValue = parseInt(value, 10);
+
+    if( !id || !value ){
+        alert('ID와 VALUE 를 입력하세요.');
+        return;
+    } else if ( isNaN(numId) || isNaN(numValue)){
+        alert('숫자를 입력하세요.');
+        return;
+    }
+
+    console.log(`${id} , ${value}`);
+
+    dummyDatas.push({id: id, value: value});
+
+    addIdInput.value = '';
+    addValueInput.value = '';
+
+
+    renderTotal();
+});
