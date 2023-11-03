@@ -22,11 +22,11 @@ let dummyDatas = [
         "value" : 70,
     }
 ];
-//최초 모든 함수 호출 
 function renderTotal () {
     renderGraph();
     renderTable();
-    // console.log(dummyDatas);
+    renderTextBox();
+    console.log(dummyDatas);
 };
 
 renderTotal();
@@ -128,12 +128,11 @@ applyBtn.addEventListener('click', function(){
 })
 
 //3. 값 추가 로직
-// const addBtn = document.querySelector('.applyBtn');
-const form = document.querySelector('form');
+const addForm = document.getElementById('addForm');
 const addIdInput = document.getElementById('addId');
 const addValueInput = document.getElementById('addValue');
 
-form.addEventListener('submit', function(event){
+addForm.addEventListener('submit', function(event){
     event.preventDefault();
 
     //입력 값 가져오기 
@@ -160,4 +159,47 @@ form.addEventListener('submit', function(event){
 
 
     renderTotal();
+});
+
+
+//4. 값 고급 편집
+const amendForm = document.getElementById('amendForm');
+const amendInput = document.querySelector('.advanced_contents');
+
+function renderTextBox () {
+    const amendInput = document.querySelector('.advanced_contents');
+    amendInput.textContent = JSON.stringify(dummyDatas, null, 4);
+};
+
+
+amendForm.addEventListener('submit', function(event){
+    event.preventDefault();
+    const contents = amendInput.value;
+
+    try {
+        const amendNewDatas = JSON.parse(`${contents}`);
+
+        //유효성 검증
+        if(!Array.isArray(amendNewDatas)){
+            throw new Error('데이터는 배열 형태여야 합니다. ');
+        }
+
+        amendNewDatas.forEach((data) => {
+            if(typeof data.id !== 'number' || typeof data.value !== 'number'){
+                throw new Error ('ID와 VALUE 는 숫자로 작성해주세요.');
+            }
+
+            if(!data.id || !data.value){
+                throw new Error('ID와 VALUE 를 입력해주세요.');
+            }
+        });
+        dummyDatas = amendNewDatas;
+        console.log('유효한 데이터', contents);
+
+        renderTotal();
+    } catch (err) {
+        alert(`데이터를 다시 작성해주세요. : ${err.message}`);
+    }
+
+
 });

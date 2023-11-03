@@ -45,7 +45,7 @@
         <!--3. 값 추가-->
         <section id="addData">
             <div class="title">3. 값 추가</div>
-            <form>
+            <form id="addForm">
                 <fieldset>
                     <input type="text" name="ID" placeholder="ID" class="input" id="addId"/>
                     <input type="text" name="value" placeholder="VALUE" class="input" id="addValue"/>
@@ -57,12 +57,12 @@
         <!--4. 값 고급 편집-->
         <section id="advancedAmend">
             <div class="title">4. 값 고급 편집</div>
-            <div class="advanced_contents">
-                호잇 값 고급 편집
-            </div>
-
-            <button class="btn applyBtn">Apply</button>
-
+            <form id="amendForm">
+                <fieldset>
+                    <textarea rows="5" cols="30" class="advanced_contents"></textarea>
+                    <input type="submit" value="Apply" class="btn applyBtn" id="advancedSubmitBtn"/>
+                </fieldset>
+            </form>
         </section>
     </main>
     <!-- JS  -->
