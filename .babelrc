@@ -1,0 +1,4 @@
+{
+  "type": "module",
+  "presets": [["@babel/preset-env"]]
+}
