@@ -1,18 +1,117 @@
 * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    border:0;
+}
+
+.container {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+
+.todoForm {
+    margin: 1.5rem;
+}
+
+.todo-datas {
+    margin: 1.5rem 0;
+}
+
+/* 할일 목록 없는 경우 TEXT CSS */
+.emptyList {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.3rem;
+}
+
+
+/* 할일 데이터 목록들 */
+.todo-lists {
+    display: flex;
+    flex-direction: column;
+    min-height: 60px;
+}
+
+
+li {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+    height: 45px;
+}
+
+li .list-text {
+    flex-grow: 1;
+}
+
+/* 새 할일 등록 input */
+
+.todo-input {
+    display: flex;
+    flex-direction: row;
+}
+
+.todo-input #newInput {
+    height: 45px;
+    font-size: 15px;
+    color: #222831;
+    flex-grow: 1;
+    padding-left: 8px;
+    border-width: 0 0 1px;
+    outline: none;
+}
+
+.list-text {
     font-size: 1.2rem;
 }
 
-body {
-    display: flex;
-    flex-direction: row;
-    margin: auto 30px auto 30px;
-    height: 100vh;
-    /* overflow: scroll; */
+/* 리스트 버튼 , 추가 버튼 */
+
+button {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    
+}
+
+.addBtn {
+    margin-left: 30px;
+    padding: 3px 15px;
+    background-color: #FFD1DA;
+}
+
+.addBtn:hover{
+    background-color: #FBA1B7;
+    pointer: cursor;
+}
+
+.listBtn {
+    margin-left: 15px;
+    padding: 3px 12px;
+    background-color: #BFACE0;
 
 }
 
-main {
-    width: 100vw;
-    padding: 50px 0 30px 20px;
-    background-color: pink;
+.listBtn:hover{
+    background-color:#A084CA;
+    pointer: cursor;
 }
