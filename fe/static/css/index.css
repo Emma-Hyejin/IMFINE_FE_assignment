@@ -35,9 +35,9 @@
 .emptyList {
     font-size: 1.5rem;
     font-weight: lighter;
-    background-color: lime;
     display: flex;
     justify-content: center;
+    margin-bottom: 2.3rem;
 }
 
 
