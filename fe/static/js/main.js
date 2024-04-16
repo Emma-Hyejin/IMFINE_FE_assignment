@@ -2,10 +2,9 @@
 const listUl = document.querySelector(".todo-lists");
 const newInput = document.querySelector("#newInput");
 const newBtn = document.querySelector(".addBtn");
-const listArr = [];
+const listArr = ["아이스크림 먹기"];
 
 function createDomNewList (newTodo) {
-    console.log(newTodo);
     const li = document.createElement("li");
     const p = document.createElement("p");
     const deleteButton = document.createElement("button");
@@ -14,6 +13,11 @@ function createDomNewList (newTodo) {
     deleteButton.textContent = "삭제";
     amendButton.textContent = "수정";
     
+    //버튼에 Event 추가 
+    deleteButton.addEventListener("click", deleteData);
+    amendButton.addEventListener("click", amendData);
+    
+
     //클래스 추가
     li.classList.add("list");
     p.classList.add("list-text");
@@ -50,11 +54,44 @@ function checkEmptyList () {
         listContainer.appendChild(div);
     } else {
         //css 속성 없애기 
-        emptyMsg.remove();
+        if(emptyMsg){
+            emptyMsg.remove();
+        }
+
     }
 };
 
 //페이지 첫 로드 될 때 리스트 확인 
 document.addEventListener("DOMContentLoaded", function(){
     checkEmptyList();
+    prevList();
 });
+
+
+//기존 배열에 데이터가 있을 경우 
+function prevList(){
+    listArr.forEach(todo => {
+        createDomNewList(todo);
+    })
+}
+
+//데이터 수정 및 삭제
+function deleteData (e){
+    e.preventDefault();
+    const clickListItem = e.target.parentElement; //눌려진 버튼의 부모 요소. 
+    const result = confirm("정말 삭제하시겠습니까?"); 
+    console.log("삭제 버튼 클릭");
+    if(result){
+        //확인
+        clickListItem.remove();
+    } else if (!result){
+        //취소
+        return;
+    }
+
+};
+
+function amendData (e){
+    e.preventDefault();
+    console.log("수정 버튼 클릭")
+};
