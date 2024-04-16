@@ -9,8 +9,25 @@
 <body>
     <main id="main-content">
         <h1>Todo List </h1>
-    </main>
+        <form class="container todoForm">
+            <div class="todo-input">
+                <label for="newInput" class="sr-only">할일 추가</label>
+                <input type="text" id="newInput" name="newList" placeholder="새로운 할일을 작성해주세요"/>
+                <button class="addBtn">추가</button>
+            </div>
+            <div class="container todo-datas">
+                <ul class="todo-lists">
+                    <!-- <li class="list">
+                        <p class="list-text">커피 마시기</p>
+                        <button class="listBtn deleteList">삭제</button>
+                        <button class="listBtn amendList">수정</button>
+                    </li> -->
+                </ul>
+            </div>
+        </form>
+
+    </main> 
     <!-- JS  -->
-    <script src="/fe/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>     
