@@ -6,6 +6,7 @@ const listArr = ["아이스크림 먹기"];
 
 function createDomNewList (newTodo) {
     const li = document.createElement("li");
+    const checkBox = document.createElement("input");
     const p = document.createElement("p");
     const deleteButton = document.createElement("button");
     const amendButton = document.createElement("button");
@@ -13,17 +14,22 @@ function createDomNewList (newTodo) {
     deleteButton.textContent = "삭제";
     amendButton.textContent = "수정";
     
-    //버튼에 Event 추가 
+    // Event 추가 
     deleteButton.addEventListener("click", deleteData);
     amendButton.addEventListener("click", amendData);
+    checkBox.addEventListener("change", clearList)
     
 
     //클래스 추가
     li.classList.add("list");
+    checkBox.classList.add("checkItem");
+    checkBox.type = "checkbox";
+    checkBox.id = "listCheckBox";
     p.classList.add("list-text");
     deleteButton.classList.add("listBtn", "deleteList");
     amendButton.classList.add("listBtn", "amendList");
 
+    li.appendChild(checkBox);
     li.appendChild(p);
     li.appendChild(deleteButton);
     li.appendChild(amendButton);
@@ -91,7 +97,26 @@ function deleteData (e){
 
 };
 
+//수정 기능 보류 
 function amendData (e){
     e.preventDefault();
     console.log("수정 버튼 클릭")
 };
+
+
+//할 일 클리어 - 체크박스
+function clearList (e) {
+    // e.preventDefault();
+    const isCheck = e.target.checked;
+    const relatedList = e.target.closest(".list");
+    const relatedText = relatedList.querySelector(".list-text");
+
+    if(isCheck){
+        relatedText.classList.add("clearList");
+    } else if(!isCheck){
+
+        relatedText.classList.remove("clearList")
+
+
+    }
+}

@@ -63,6 +63,17 @@ li .list-text {
     flex-grow: 1;
 }
 
+/* 할 일 리스트 체크 박스 */
+.checkItem {
+    margin-right: 15px;
+}
+
+.clearList {
+    font-style: italic;
+    color: grey;
+    text-decoration: line-through;
+}
+
 /* 새 할일 등록 input */
 
 .todo-input {
