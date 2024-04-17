@@ -12,7 +12,7 @@ function createDomNewList (newTodo) {
     const amendButton = document.createElement("button");
     p.textContent = newTodo;
     deleteButton.textContent = "삭제";
-    amendButton.textContent = "수정";
+    amendButton.textContent = "수정"; //innerHTML
     
     // Event 추가 
     deleteButton.addEventListener("click", deleteData);
@@ -119,4 +119,5 @@ function clearList (e) {
 
 
     }
-}
+};
+
