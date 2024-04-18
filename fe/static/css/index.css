@@ -113,6 +113,11 @@ input {
     margin: 1.5rem 0;
 }
 
+/*수정*/
+.edit-mode {
+    display: inline-block;
+}
+
 /* 할일 목록 없는 경우 TEXT CSS */
 .emptyList {
     font-size: 1.5rem;

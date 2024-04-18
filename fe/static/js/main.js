@@ -2,7 +2,7 @@
 const listUl = document.querySelector(".todo-lists");
 const newInput = document.querySelector("#newInput");
 const newBtn = document.querySelector(".addBtn");
-const listArr = ["아이스크림 먹기"];
+const listArr = [];
 
 function createDomNewList (newTodo) {
     const li = document.createElement("li");
@@ -24,7 +24,7 @@ function createDomNewList (newTodo) {
     li.classList.add("list");
     checkBox.classList.add("checkItem");
     checkBox.type = "checkbox";
-    checkBox.id = "listCheckBox";
+    checkBox.id = `listCheckBox${listArr.length + 1}`
     p.classList.add("list-text");
     deleteButton.classList.add("listBtn", "deleteList");
     amendButton.classList.add("listBtn", "amendList");
@@ -100,7 +100,52 @@ function deleteData (e){
 //수정 기능 보류 
 function amendData (e){
     e.preventDefault();
-    console.log("수정 버튼 클릭")
+    console.log("수정 버튼 클릭");
+    const listItem = e.target.closest(".list");
+    const textElement = listItem.querySelector(".list-text");
+    const previousText = textElement.textContent;
+    const inputElement = document.createElement("input");
+    inputElement.value = textElement.textContent;
+
+    //p 태그를 감추고 input 태그 보이도록 
+    textElement.classList.add("edit-mode");
+    textElement.after(inputElement);
+    textElement.style.display = "none";
+
+    //input 태그에 포커스를 주고 완료 이벤트 설정 
+    inputElement.focus();
+
+    //input 태그의 값이 변경되면 newText에 새로운 값이 할당 
+    inputElement.addEventListener("input", () => {
+        newText = inputElement.value;
+    });
+
+    //Enter 시 빈 텍스트의 할일이 추가되어서 이를 막아주는 코드 작성 
+    inputElement.addEventListener("keydown", (e) => {
+        if(e.key === "Enter"){
+            e.preventDefault();
+            inputElement.blur(); //수정을 완료하고 포커스를 해제 
+        }
+    })
+
+    //input에서 focus 빠져나가면 
+    inputElement.addEventListener("blur", () => {
+        const newText = inputElement.value;
+        if(newText !== null && newText !== ""){
+            textElement.textContent = newText;
+            
+        }else {
+            //수정을 취소하거나 빈 문자열을 입력 한 경우 
+            textElement.textContent = previousText;
+        };
+
+
+        //input -> p 태그로 변환 
+        inputElement.remove();
+        textElement.style.display = "block";
+
+    });  
+
 };
 
 
